@@ -1,4 +1,4 @@
-# study
+# Kids Trackr
 
 A new Flutter project.
 

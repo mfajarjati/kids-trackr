@@ -31,19 +31,11 @@ class About extends StatelessWidget {
       body: Column(
         // Use Column for vertical layout
         children: [
-          // Header section
-          Container(
-            height: 50,
-            decoration: const BoxDecoration(
-              color: Color.fromRGBO(186, 252, 182, 1),
-            ),
-          ),
-
           // Menu section
           Expanded(
             // Make container fill remaining space
             child: Container(
-              padding: EdgeInsets.only(left: 6.w, right: 7.w),
+              padding: EdgeInsets.only(left: 6.w, right: 7.w, top: 4.h),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -54,7 +46,6 @@ class About extends StatelessWidget {
                 ),
               ),
               child: const Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     'Kids\nTrackr',
@@ -145,7 +136,16 @@ class About extends StatelessWidget {
                         fontWeight: FontWeight.w500),
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: 100),
+                  SizedBox(height: 50),
+                  Text(
+                    'Icon by:\nhttps://free3dicon.com/',
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontFamily: 'WorkSans',
+                        fontWeight: FontWeight.w500,
+                        fontStyle: FontStyle.italic),
+                    textAlign: TextAlign.center,
+                  ),
                 ],
               ),
             ),

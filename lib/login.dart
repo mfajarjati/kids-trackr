@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:study/home.dart';
+import 'package:study/login_guru.dart';
+import 'package:study/login_ortu.dart';
 
 class LoginPage extends StatefulWidget {
   static String routeName = 'LoginPage';
@@ -14,8 +15,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formField = GlobalKey<FormState>();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  int _selectedIndex = 0;
   bool passToggle = true;
 
   @override
@@ -61,8 +63,6 @@ class _LoginPageState extends State<LoginPage> {
             child: Form(
               key: _formField,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   //J U D U L
                   Animate(
@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Text(
                         'Kids Trackr',
                         style: TextStyle(
-                          fontSize: 72.sp,
+                          fontSize: 62.sp,
                           fontFamily: 'Inter',
                           fontWeight: FontWeight.w700,
                           color: const Color.fromRGBO(79, 69, 87, 1),
@@ -88,148 +88,102 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
+                  SizedBox(
+                    height: 10.h,
+                  ),
                   //f O R M    E M A I L
                   Animate(
                     effects: const [FadeEffect(), ScaleEffect()],
                     child: Padding(
-                      padding: EdgeInsets.only(
-                        left: 20.w,
-                        right: 20.w,
-                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          //E  M  A  I  L
-                          SizedBox(
-                            height: 4.h,
-                          ),
-                          TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            controller: emailController,
-                            decoration: InputDecoration(
-                              labelText: "Nomor Handphone",
-                              prefixIcon: const Icon(
-                                Icons.phone,
-                                color: Color.fromRGBO(79, 69, 87, 1),
-                              ),
-                              enabledBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color.fromRGBO(177, 178, 181, 1),
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: const Color.fromRGBO(177, 178, 181, 1),
-                                  width: 2.0.w,
-                                ),
-                              ),
-                              labelStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: 15.sp,
-                              ),
-                            ),
-                          ),
-                          //P  A  S  S  W  O  R  D
-                          SizedBox(height: 10.h),
-                          TextFormField(
-                            keyboardType: TextInputType.emailAddress,
-                            controller: passwordController,
-                            obscureText: passToggle,
-                            decoration: InputDecoration(
-                              labelText: "Password",
-                              prefixIcon: const Icon(
-                                Icons.lock,
-                                color: Color.fromRGBO(79, 69, 87, 1),
-                              ),
-                              enabledBorder: const UnderlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Color.fromRGBO(177, 178, 181, 1),
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: const Color.fromRGBO(177, 178, 181, 1),
-                                  width: 2.0.w,
-                                ),
-                              ),
-                              labelStyle: TextStyle(
-                                color: Colors.black,
-                                fontSize: 15.sp,
-                              ),
-                              suffixIcon: InkWell(
+                          //Pilih jenis login
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              InkWell(
+                                borderRadius: BorderRadius.circular(30),
                                 onTap: () {
                                   setState(() {
-                                    passToggle = !passToggle;
+                                    _selectedIndex = 0;
                                   });
                                 },
-                                child: Icon(
-                                  passToggle
-                                      ? Icons.visibility
-                                      : Icons.visibility_off,
-                                  color: const Color.fromRGBO(79, 69, 87, 1),
-                                ),
-                              ),
-                            ),
-                          ),
-                          //b u t t o n   s i g n   I N
-                          SizedBox(height: 15.h),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pushNamed(context, Home.routeName);
-                            },
-                            child: Container(
-                              width: 192.w,
-                              height: 40.h,
-                              decoration: BoxDecoration(
-                                color: const Color.fromRGBO(255, 255, 255, 1),
-                                borderRadius: BorderRadius.circular(5),
-                                boxShadow: const [
-                                  BoxShadow(
-                                    color: Color.fromRGBO(0, 0, 0, 0.2),
-                                    spreadRadius: 0,
-                                    blurRadius: 4,
-                                    offset: Offset(4, 4),
-                                  )
-                                ],
-                              ),
-                              child: Center(
-                                child: Text(
-                                  " Sign In",
-                                  style: TextStyle(
-                                    color: const Color.fromRGBO(79, 69, 87, 1),
-                                    fontSize: 24.sp,
-                                    fontFamily: 'Work Sans',
-                                    fontWeight: FontWeight.w800,
+                                child: AnimatedContainer(
+                                  duration: const Duration(milliseconds: 300),
+                                  padding: const EdgeInsets.all(8),
+                                  width: 155,
+                                  decoration: BoxDecoration(
+                                    color: _selectedIndex == 0
+                                        ? Colors.white
+                                        : const Color.fromRGBO(0, 0, 0, 0.05),
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Orang Tua",
+                                      style: TextStyle(
+                                        color:
+                                            const Color.fromRGBO(75, 63, 99, 1),
+                                        fontSize: 15.0,
+                                        fontFamily: 'WorkSans',
+                                        fontWeight: _selectedIndex == 0
+                                            ? FontWeight.bold
+                                            : FontWeight.normal,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ),
-                          //F O R G O T   P A S S W O R D
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  "Forgot Password?",
-                                  style: TextStyle(
-                                    fontStyle: FontStyle.normal,
-                                    fontSize: 9.sp,
-                                    fontFamily: 'Work Sans',
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color.fromRGBO(79, 69, 87, 1),
+                              InkWell(
+                                borderRadius: BorderRadius.circular(30),
+                                onTap: () {
+                                  setState(() {
+                                    _selectedIndex = 1;
+                                  });
+                                },
+                                child: AnimatedContainer(
+                                  duration: const Duration(milliseconds: 300),
+                                  padding: const EdgeInsets.all(8),
+                                  width: 155,
+                                  decoration: BoxDecoration(
+                                    color: _selectedIndex == 1
+                                        ? Colors.white
+                                        : const Color.fromRGBO(0, 0, 0, 0.05),
+                                    borderRadius: BorderRadius.circular(30),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Guru",
+                                      style: TextStyle(
+                                        color:
+                                            const Color.fromRGBO(75, 63, 99, 1),
+                                        fontSize: 15.0,
+                                        fontFamily: 'WorkSans',
+                                        fontWeight: _selectedIndex == 1
+                                            ? FontWeight.bold
+                                            : FontWeight.normal,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
                             ],
                           ),
+                          SizedBox(
+                            height: 190.h,
+                            child: _selectedIndex == 0
+                                ? const LoginOrtu()
+                                : const LoginGuru(),
+                          ),
+                          SizedBox(
+                            height: 10.h,
+                          ),
                         ],
                       ),
                     ),
                   ),
-                  SizedBox(height: 250.h),
                 ],
               ),
             ),

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:study/menu/absensi/absensi.dart';
+import 'package:study/menu/pesan/chat_page.dart';
 import 'package:study/my_profile/profile.dart';
 import 'package:sizer/sizer.dart';
 import 'package:study/menu/gizi.dart';
-import 'package:study/menu/pesan.dart';
+
 import 'package:study/menu/pelajaran/mapel.dart';
 // import 'package:study/menu/perjalanan/rute.dart';
 import 'package:study/menu/berita/beritahome.dart';
@@ -359,7 +360,7 @@ class _HomeState extends State<Home> {
                     ).animate(delay: 200.ms).fadeIn(duration: 300.ms),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, Pesan.routeName);
+                        Navigator.pushNamed(context, ChatPageOrtu.routeName);
                       },
                       child: Stack(
                         children: [
