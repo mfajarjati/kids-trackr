@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:study/anak/latihan/level1.dart';
+import 'package:study/anak/splash_anak.dart';
 import 'package:study/guru/data_diri_guru.dart';
 import 'package:study/guru/home_guru.dart';
 import 'package:study/guru/penilaian/catatan_siswa.dart';
+import 'package:study/guru/penilaian/matpel.dart';
 import 'package:study/guru/penilaian/tambah_nilai.dart';
 import 'package:study/guru/penilaian/daftar_siswa.dart';
 import 'package:study/guru/penilaian/lihat_nilai.dart';
@@ -41,6 +43,7 @@ import 'package:study/anak/latihan/latihan.dart';
 import 'package:study/login_guru.dart';
 import 'package:study/login_ortu.dart';
 import 'package:study/menu/pesan/chat_page.dart';
+import 'package:study/splash.dart';
 
 // import 'package:study/menu/perjalanan/rute.dart';
 
@@ -103,8 +106,11 @@ class MyApp extends StatelessWidget {
           CatatanSiswa.routeName: (context) => const CatatanSiswa(),
           ChatPage.routeName: (context) => const ChatPage(),
           ChatPageOrtu.routeName: (context) => const ChatPageOrtu(),
+          SplashPage.routeName: (context) => const SplashPage(),
+          SplashPageAnak.routeName: (context) => const SplashPageAnak(),
+          MatpelGuru.routeName: (context) => const MatpelGuru(),
         },
-        initialRoute: StaredPage.routeName,
+        initialRoute: SplashPage.routeName,
       );
     });
   }

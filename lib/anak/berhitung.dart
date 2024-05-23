@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_youtube_view/flutter_youtube_view.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:video_player/video_player.dart';
+import 'package:chewie/chewie.dart';
 
 class Berhitung extends StatefulWidget {
   const Berhitung({super.key});
@@ -13,10 +14,42 @@ class Berhitung extends StatefulWidget {
   _BerhitungState createState() => _BerhitungState();
 }
 
-class _BerhitungState extends State<Berhitung>
-    implements YouTubePlayerListener {
-  // ignore: unused_field
-  late FlutterYoutubeViewController _controller;
+class _BerhitungState extends State<Berhitung> {
+  late VideoPlayerController _videoPlayerController;
+  late ChewieController _chewieController;
+  late Future<void> _initializeVideoPlayerFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _videoPlayerController = VideoPlayerController.asset(
+      'assets/images/Wildlife.mp4',
+    );
+
+    _initializeVideoPlayerFuture =
+        _videoPlayerController.initialize().then((_) {
+      setState(() {
+        _chewieController = ChewieController(
+          videoPlayerController: _videoPlayerController,
+          autoPlay: false,
+          looping: true,
+          // Remove hardcoded aspectRatio
+          // Use ChewieController's auto aspect ratio
+          autoInitialize: true,
+          allowedScreenSleep: false,
+          showControls: true,
+          fullScreenByDefault: false,
+        );
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _videoPlayerController.dispose();
+    _chewieController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,63 +76,26 @@ class _BerhitungState extends State<Berhitung>
       ),
       body: Column(
         children: [
-          Container(
-            decoration: const BoxDecoration(
-              color: Color.fromRGBO(186, 252, 182, 1),
-            ),
-            child: SingleChildScrollView(
-// kalau pakai gambar
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Image.asset(
-                      'assets/images/video1.jpeg',
-                      height: 180,
-                      width: 300,
-                    ),
-                  ]).animate(delay: 200.ms).fadeIn(duration: 300.ms),
+          // Video player with controls
+          FutureBuilder(
+            future: _initializeVideoPlayerFuture,
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                return AspectRatio(
+                  aspectRatio: _videoPlayerController.value.aspectRatio,
+                  child: Chewie(controller: _chewieController),
+                );
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
+            },
+          ),
 
-// kalau pakai video yotube
-              // child: Column(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: <Widget>[
-              //     SizedBox(height: 2.h),
-              //     SizedBox(
-              //       width: 260,
-              //       height: 150,
-              //       child: FlutterYoutubeView(
-              //         onViewCreated: _onYoutubeCreated,
-              //         listener: this,
-              //         scaleMode: YoutubeScaleMode
-              //             .fitWidth, // <option> fitWidth, fitHeight
-              //         params: const YoutubeParam(
-              //           videoId: 'dCMtKTg08SY',
-              //           showUI: false,
-              //           startSeconds: 0.0, // <option>
-              //           autoPlay: false,
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
           Expanded(
             child: Container(
               padding: EdgeInsets.only(left: 6.w, right: 9.w, top: 5.w),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(
-                    SizerUtil.deviceType == DeviceType.tablet ? 60 : 40,
-                  ),
-                  topRight: Radius.circular(
-                    SizerUtil.deviceType == DeviceType.tablet ? 60 : 40,
-                  ),
-                ),
               ),
               child: Container(
                 margin: EdgeInsets.symmetric(vertical: 1.h),
@@ -208,68 +204,5 @@ class _BerhitungState extends State<Berhitung>
         ],
       ),
     );
-  }
-
-  // ignore: unused_element
-  void _onYoutubeCreated(FlutterYoutubeViewController controller) {
-    // Assign the controller to the local variable
-    _controller = controller;
-  }
-
-  @override
-  void onCurrentSecond(double second) {
-    // Implement your logic here
-  }
-
-  @override
-  void onReady() {
-    // Implement your logic here
-  }
-
-  @override
-  void onError(String error) {
-    // Implement your logic here
-  }
-
-  @override
-  void onStateChange(String state) {
-    // Implement your logic here
-  }
-
-  @override
-  void onVideoDuration(double duration) {
-    // Implement your logic here
-  }
-
-  void onYoutubeError(String error) {
-    // Implement your logic here
-  }
-
-  void onVideoEnded() {
-    // Implement your logic here
-  }
-
-  void onVideoStarted() {
-    // Implement your logic here
-  }
-
-  void onBuffering() {
-    // Implement your logic here
-  }
-
-  void onPaused() {
-    // Implement your logic here
-  }
-
-  void onPlaying() {
-    // Implement your logic here
-  }
-
-  void onSeekTo(double second) {
-    // Implement your logic here
-  }
-
-  void onStopped() {
-    // Implement your logic here
   }
 }

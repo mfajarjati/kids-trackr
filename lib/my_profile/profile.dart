@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:study/anak/splash_anak.dart';
 import 'package:study/my_profile/about/about.dart';
 import 'package:sizer/sizer.dart';
 // import 'package:study/my_profile/pengaturan/setting.dart';
 import 'package:study/my_profile/pembayaran/tabb.dart';
 import 'package:study/my_profile/update/update.dart';
-import 'package:study/anak/home_anak.dart';
+// import 'package:study/anak/home_anak.dart';
 //import 'package:study/started.dart';
 
 class ProfileDetail extends StatefulWidget {
@@ -100,7 +101,7 @@ class _ProfileDetailState extends State<ProfileDetail> {
                     title: const Text('Mode Anak'),
                     trailing: const Icon(Icons.arrow_forward_ios),
                     onTap: () {
-                      Navigator.pushNamed(context, Anak.routeName);
+                      Navigator.pushNamed(context, SplashPageAnak.routeName);
                     },
                   ),
                   ListTile(

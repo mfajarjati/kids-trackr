@@ -10,6 +10,7 @@ class LihatNilai extends StatefulWidget {
   static String routeName = 'LihatNilai';
 
   @override
+  // ignore: library_private_types_in_public_api
   _LihatNilaiState createState() => _LihatNilaiState();
 }
 
@@ -144,8 +145,8 @@ class _LihatNilaiState extends State<LihatNilai> {
                       ),
                       const SizedBox(height: 20),
                       for (var grade in grades) ...[
-                        _buildRow(grade['title']!, grade['subject']!,
-                            grade['tooltip']!, grade['score']!),
+                        _buildRow(grade['title']!, grade['tooltip']!,
+                            grade['score']!),
                         const Divider(
                           color: Colors.grey,
                           thickness: 1,
@@ -232,7 +233,7 @@ class _LihatNilaiState extends State<LihatNilai> {
     );
   }
 
-  Widget _buildRow(String title, String subject, String tooltip, String score) {
+  Widget _buildRow(String title, String tooltip, String score) {
     return _isLoading
         ? _buildShimmerRow()
         : Row(
@@ -273,18 +274,18 @@ class _LihatNilaiState extends State<LihatNilai> {
                         ),
                       ],
                     ),
-                    Wrap(
-                      children: [
-                        Text(
-                          subject,
-                          style: const TextStyle(
-                            height: 1.0,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w300,
-                          ),
-                        ),
-                      ],
-                    ),
+                    // Wrap(
+                    //   children: [
+                    //     Text(
+                    //       subject,
+                    //       style: const TextStyle(
+                    //         height: 1.0,
+                    //         fontSize: 14,
+                    //         fontWeight: FontWeight.w300,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                   ],
                 ),
               ),

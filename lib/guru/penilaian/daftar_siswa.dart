@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:animation_list/animation_list.dart';
-import 'package:study/guru/penilaian/penilaian_siswa.dart';
+import 'package:study/guru/penilaian/matpel.dart';
 
 class NilaiSiswa extends StatelessWidget {
   const NilaiSiswa({super.key});
@@ -52,7 +52,7 @@ class NilaiSiswa extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Navigator.pushNamed(context, PenilaianSiswa.routeName);
+                      Navigator.pushNamed(context, MatpelGuru.routeName);
                     },
                     child: _buildSiswaContainer(
                       'NIS. 2368709691',
