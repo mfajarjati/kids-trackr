@@ -117,31 +117,31 @@ class _Berita1State extends State<Berita1> {
                               textAlign: TextAlign.justify,
                             ),
                       SizedBox(height: 2.h),
-                      ElevatedButton(
-                        onPressed: () {
-                          Fluttertoast.showToast(
-                              msg: "Undangan telah diunduh",
-                              toastLength: Toast.LENGTH_SHORT,
-                              gravity: ToastGravity.CENTER,
-                              timeInSecForIosWeb: 1,
-                              textColor: Colors.white,
-                              fontSize: 16.0);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          backgroundColor: const Color.fromRGBO(76, 66, 83, 1),
-                          foregroundColor: Colors.white,
-                          elevation: 5.0,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 95.0,
-                            vertical: 15.0,
-                          ),
-                        ),
-                        child: const Text('Unduh Undangan'),
-                      ),
-                      SizedBox(height: 3.h), // Spasi bawah
+                      // ElevatedButton(
+                      //   onPressed: () {
+                      //     Fluttertoast.showToast(
+                      //         msg: "Undangan telah diunduh",
+                      //         toastLength: Toast.LENGTH_SHORT,
+                      //         gravity: ToastGravity.CENTER,
+                      //         timeInSecForIosWeb: 1,
+                      //         textColor: Colors.white,
+                      //         fontSize: 16.0);
+                      //   },
+                      //   style: ElevatedButton.styleFrom(
+                      //     shape: RoundedRectangleBorder(
+                      //       borderRadius: BorderRadius.circular(10.0),
+                      //     ),
+                      //     backgroundColor: const Color.fromRGBO(76, 66, 83, 1),
+                      //     foregroundColor: Colors.white,
+                      //     elevation: 5.0,
+                      //     padding: const EdgeInsets.symmetric(
+                      //       horizontal: 95.0,
+                      //       vertical: 15.0,
+                      //     ),
+                      //   ),
+                      //   child: const Text('Unduh Undangan'),
+                      // ),
+                      SizedBox(height: 3.h), // Spasi bawahs
                     ],
                   ),
                 ),

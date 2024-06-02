@@ -15,28 +15,28 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   // list chat user
   List<ChatUsers> chatUsers = [
-    ChatUsers(name: "Nita Sarah", messageText: "Terimakasih!", time: "Now"),
     ChatUsers(
-        name: "Glady's Murphy", messageText: "That's Great", time: "Yesterday"),
+        name: "Nita Sarah", messageText: "Terima kasih banyak.", time: "Now"),
     ChatUsers(
-        name: "Jorge Henry", messageText: "Hey where are you?", time: "31 Mar"),
+        name: "Galiono Winarno",
+        messageText: "Nanti saya kirimkan",
+        time: "Kemarin"),
+    ChatUsers(name: "Diah Marbun", messageText: "Oke", time: "Kemarin"),
     ChatUsers(
-        name: "Philip Fox",
-        messageText: "Busy! Call me in 20 mins",
-        time: "28 Mar"),
+        name: "Karja Anggriawan",
+        messageText: "Ditunggu yah pak",
+        time: "24 Maret"),
     ChatUsers(
-        name: "Debra Hawkins",
-        messageText: "Thankyou, It's awesome",
-        time: "23 Mar"),
+        name: "Mila Najmudin",
+        messageText: "Baik, terimakasih",
+        time: "23 Maret"),
+    ChatUsers(name: "Nadia Thamrin", messageText: "Oke", time: "17 Maret"),
     ChatUsers(
-        name: "Jacob Pena",
-        messageText: "will update you in evening",
-        time: "17 Mar"),
+        name: "Safina Samosir", messageText: "Sama-sama", time: "22 Maret"),
     ChatUsers(
-        name: "Andrey Jones",
-        messageText: "Can you please share the file?",
-        time: "24 Feb"),
-    ChatUsers(name: "John Wick", messageText: "How are you?", time: "18 Feb"),
+        name: "Aulia habibah",
+        messageText: "Baik, Terimakasih",
+        time: "21 Maret"),
   ];
 
   // Function to refresh the chat list

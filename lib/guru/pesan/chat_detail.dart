@@ -18,13 +18,17 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
     ChatMessage(
         messageContent: "Halo, nama saya Janeudi.", messageType: "sender"),
     ChatMessage(
-        messageContent: "Tolong periksa dan segera tanda tangani dokumen ini,",
+        messageContent:
+            "Tolong periksa dan segera tanda tangani dokumen yang dikirimkan,",
         messageType: "sender"),
     ChatMessage(
         messageContent: "untuk tur perjalanan anak anda.",
         messageType: "sender"),
-    ChatMessage(messageContent: "ehhhh, doing OK.", messageType: "receiver"),
     ChatMessage(messageContent: "Terimakasih!", messageType: "sender"),
+    ChatMessage(
+        messageContent:
+            "Terima kasih banyak. Jika saya memiliki pertanyaan, saya akan menghubungi Anda.",
+        messageType: "receiver"),
   ];
 
   final TextEditingController _controller = TextEditingController();
@@ -127,26 +131,26 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                   fit: BoxFit.cover,
                 )
               : Row(
-                  children: [
-                    const Icon(
-                      Icons.insert_drive_file,
-                      color: Colors.white,
-                    ),
-                    const SizedBox(width: 8),
-                    if (!isImage) // Display file name only for non-image files
-                      Expanded(
-                        child: Text(
-                          message.filePath!
-                              .split('/')
-                              .last, // Extract the file name
-                          style: const TextStyle(
-                            color: Colors.white,
-                            decoration: TextDecoration.none,
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
+                  //   children: [
+                  //     const Icon(
+                  //       Icons.insert_drive_file,
+                  //       color: Colors.white,
+                  //     ),
+                  //     const SizedBox(width: 8),
+                  //     if (!isImage) // Display file name only for non-image files
+                  //       Expanded(
+                  //         child: Text(
+                  //           message.filePath!
+                  //               .split('/')
+                  //               .last, // Extract the file name
+                  //           style: const TextStyle(
+                  //             color: Colors.white,
+                  //             decoration: TextDecoration.none,
+                  //           ),
+                  //         ),
+                  //       ),
+                  //   ],
+                  ),
         ),
       );
     } else {
@@ -287,22 +291,22 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
               color: Colors.white,
               child: Row(
                 children: <Widget>[
-                  GestureDetector(
-                    onTap: _pickFile,
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        color: const Color.fromRGBO(76, 66, 83, 0.9),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: const Icon(
-                        Icons.add,
-                        color: Colors.white,
-                        size: 20,
-                      ),
-                    ),
-                  ),
+                  // GestureDetector(
+                  //   onTap: _pickFile,
+                  //   child: Container(
+                  //     height: 30,
+                  //     width: 30,
+                  //     decoration: BoxDecoration(
+                  //       color: const Color.fromRGBO(76, 66, 83, 0.9),
+                  //       borderRadius: BorderRadius.circular(30),
+                  //     ),
+                  //     child: const Icon(
+                  //       Icons.add,
+                  //       color: Colors.white,
+                  //       size: 20,
+                  //     ),
+                  //   ),
+                  // ),
                   const SizedBox(
                     width: 15,
                   ),

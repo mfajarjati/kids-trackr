@@ -15,28 +15,26 @@ class ChatPageOrtu extends StatefulWidget {
 class _ChatPageOrtuState extends State<ChatPageOrtu> {
   // list chat user
   List<ChatUsers> chatUsers = [
-    ChatUsers(name: "Jaenudi S.Pd", messageText: "Terimakasih!", time: "Now"),
     ChatUsers(
-        name: "Glady's Murphy", messageText: "That's Great", time: "Yesterday"),
+        name: "Pak Jaenudi", messageText: "Terima kasih banyak.", time: "Now"),
     ChatUsers(
-        name: "Jorge Henry", messageText: "Hey where are you?", time: "31 Mar"),
+        name: "Bu Zulaifa Fauziah",
+        messageText: "Nanti saya kirimkan",
+        time: "Kemarin"),
+    ChatUsers(name: "Diah Marbun", messageText: "Oke", time: "Kemarin"),
     ChatUsers(
-        name: "Philip Fox",
-        messageText: "Busy! Call me in 20 mins",
-        time: "28 Mar"),
+        name: "Pak Ahman Sanusi",
+        messageText: "Ditunggu yah pak",
+        time: "24 Maret"),
     ChatUsers(
-        name: "Debra Hawkins",
-        messageText: "Thankyou, It's awesome",
-        time: "23 Mar"),
+        name: "Bu Siti Nurhayati",
+        messageText: "Baik, terimakasih",
+        time: "23 Maret"),
+    ChatUsers(name: "Pak Mamud Ismail", messageText: "Oke", time: "17 Maret"),
     ChatUsers(
-        name: "Jacob Pena",
-        messageText: "will update you in evening",
-        time: "17 Mar"),
+        name: "Pak Joko Slamet", messageText: "Sama-sama", time: "22 Maret"),
     ChatUsers(
-        name: "Andrey Jones",
-        messageText: "Can you please share the file?",
-        time: "24 Feb"),
-    ChatUsers(name: "John Wick", messageText: "How are you?", time: "18 Feb"),
+        name: "Bu Ismi", messageText: "Baik, Terimakasih", time: "21 Maret"),
   ];
 
   // Function to refresh the chat list

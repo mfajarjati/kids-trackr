@@ -194,33 +194,33 @@ class _LihatNilaiState extends State<LihatNilai> {
                               ),
                             ),
                       SizedBox(height: 2.h),
-                      _isLoading
-                          ? _buildShimmerButton()
-                          : ElevatedButton(
-                              onPressed: () {
-                                Fluttertoast.showToast(
-                                    msg: "Rapot telah diunduh",
-                                    toastLength: Toast.LENGTH_SHORT,
-                                    gravity: ToastGravity.CENTER,
-                                    timeInSecForIosWeb: 1,
-                                    textColor: Colors.white,
-                                    fontSize: 16.0);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                backgroundColor:
-                                    const Color.fromRGBO(76, 66, 83, 1),
-                                foregroundColor: Colors.white,
-                                elevation: 5.0,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 105.0,
-                                  vertical: 15.0,
-                                ),
-                              ),
-                              child: const Text('Unduh Rapot'),
-                            ),
+                      // _isLoading
+                      //     ? _buildShimmerButton()
+                      //     : ElevatedButton(
+                      //         onPressed: () {
+                      //           Fluttertoast.showToast(
+                      //               msg: "Rapot telah diunduh",
+                      //               toastLength: Toast.LENGTH_SHORT,
+                      //               gravity: ToastGravity.CENTER,
+                      //               timeInSecForIosWeb: 1,
+                      //               textColor: Colors.white,
+                      //               fontSize: 16.0);
+                      //         },
+                      //         style: ElevatedButton.styleFrom(
+                      //           shape: RoundedRectangleBorder(
+                      //             borderRadius: BorderRadius.circular(10.0),
+                      //           ),
+                      //           backgroundColor:
+                      //               const Color.fromRGBO(76, 66, 83, 1),
+                      //           foregroundColor: Colors.white,
+                      //           elevation: 5.0,
+                      //           padding: const EdgeInsets.symmetric(
+                      //             horizontal: 105.0,
+                      //             vertical: 15.0,
+                      //           ),
+                      //         ),
+                      //         child: const Text('Unduh Rapot'),
+                      //       ),
                       SizedBox(height: 10.h),
                     ],
                   ),

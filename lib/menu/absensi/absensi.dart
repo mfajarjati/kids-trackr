@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:sizer/sizer.dart';
 import 'package:study/menu/absensi/bar_graph.dart';
@@ -175,30 +174,6 @@ class _AbsensiState extends State<Absensi> {
                                 ),
                                 SizedBox(
                                   height: 2.h,
-                                ),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    Fluttertoast.showToast(
-                                      msg: "Rincian telah diunduh",
-                                      toastLength: Toast.LENGTH_SHORT,
-                                      gravity: ToastGravity.CENTER,
-                                      timeInSecForIosWeb: 1,
-                                      textColor: Colors.white,
-                                      fontSize: 16.0,
-                                    );
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10.0),
-                                    ),
-                                    backgroundColor:
-                                        const Color.fromRGBO(76, 66, 83, 1),
-                                    foregroundColor: Colors.white,
-                                    elevation: 5.0,
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 95.0, vertical: 15.0),
-                                  ),
-                                  child: const Text('Unduh Rincian'),
                                 ),
                               ],
                             ),

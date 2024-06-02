@@ -20,20 +20,27 @@ class _TugasSiswaState extends State<TugasSiswa> {
   final _tahunController = TextEditingController();
   final _scrollController = ScrollController();
   final _catatanFocusNode = FocusNode();
-  String? _mataPelajaran;
+  String? _mataPelajaran =
+      "Matematika"; // Inisialisasi dengan nilai default yang ada dalam daftar
+  List<String> _mataPelajaranList = [
+    "Matematika",
+    "Fisika",
+    "Kimia",
+    "Biologi"
+  ];
   String? _semester;
   bool _isLoading = true;
 
-  final List<String> _mataPelajaranList = [
-    "Tema 1: Diriku",
-    "Tema 2: Kegemaranku",
-    "Tema 3: Kegiatanku",
-    "Tema 4: Keluargaku",
-    "Tema 5: Pengalamanku",
-    "Tema 6: Lingkungan bersih, sehat, dan asri",
-    "Tema 7: Benda, hewan, dan tanaman di sekitarku",
-    "Tema 8: Peristiwa alam",
-  ];
+  // final List<String> _mataPelajaranList = [
+  //   "Tema 1: Diriku",
+  //   "Tema 2: Kegemaranku",
+  //   "Tema 3: Kegiatanku",
+  //   "Tema 4: Keluargaku",
+  //   "Tema 5: Pengalamanku",
+  //   "Tema 6: Lingkungan bersih, sehat, dan asri",
+  //   "Tema 7: Benda, hewan, dan tanaman di sekitarku",
+  //   "Tema 8: Peristiwa alam",
+  // ];
 
   final List<String> _semesterList = [
     "Semester 1",

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:study/guru/data_diri_guru.dart';
-import 'package:study/guru/latihan/latihan.dart';
+// import 'package:study/guru/latihan/latihan.dart';
 import 'package:study/guru/penilaian/daftar_siswa.dart';
 import 'package:study/guru/pesan/chat_page.dart';
 
@@ -267,76 +267,76 @@ class _GuruState extends State<Guru> {
                     SizedBox(
                       height: 2.h,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return const LatihanGuru();
-                        }));
-                      },
-                      child: Container(
-                        height: 120,
-                        margin: const EdgeInsets.only(
-                            bottom: 10), // Spacing between containers
-                        padding: const EdgeInsets.all(15),
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 2,
-                              blurRadius: 7,
-                              offset: const Offset(0, 5),
-                            ),
-                          ],
-                          color: const Color.fromRGBO(161, 213, 245, 100),
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(height: 5),
-                                  Text(
-                                    '   Latihan',
-                                    style: TextStyle(
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Text(
-                                    '    Kemampuan\n    Anak Didik',
-                                    style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.normal,
-                                      height: 1.1,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Transform.rotate(
-                              angle: 0.3,
-                              child: Container(
-                                width: 29.w,
-                                height: 23.h,
-                                decoration: BoxDecoration(
-                                  image: const DecorationImage(
-                                    image: AssetImage(
-                                      'assets/images/tugas.png',
-                                    ),
-                                    fit: BoxFit.cover,
-                                  ),
-                                  borderRadius: BorderRadius.circular(15),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ).animate(delay: 200.ms).fadeIn(duration: 300.ms),
+                    // GestureDetector(
+                    //   onTap: () {
+                    //     Navigator.push(context,
+                    //         MaterialPageRoute(builder: (context) {
+                    //       return const LatihanGuru();
+                    //     }));
+                    //   },
+                    //   child: Container(
+                    //     height: 120,
+                    //     margin: const EdgeInsets.only(
+                    //         bottom: 10), // Spacing between containers
+                    //     padding: const EdgeInsets.all(15),
+                    //     decoration: BoxDecoration(
+                    //       boxShadow: [
+                    //         BoxShadow(
+                    //           color: Colors.grey.withOpacity(0.5),
+                    //           spreadRadius: 2,
+                    //           blurRadius: 7,
+                    //           offset: const Offset(0, 5),
+                    //         ),
+                    //       ],
+                    //       color: const Color.fromRGBO(161, 213, 245, 100),
+                    //       borderRadius: BorderRadius.circular(30),
+                    //     ),
+                    //     child: Row(
+                    //       crossAxisAlignment: CrossAxisAlignment.start,
+                    //       children: [
+                    //         const Expanded(
+                    //           child: Column(
+                    //             crossAxisAlignment: CrossAxisAlignment.start,
+                    //             children: [
+                    //               SizedBox(height: 5),
+                    //               Text(
+                    //                 '   Latihan',
+                    //                 style: TextStyle(
+                    //                   fontSize: 25,
+                    //                   fontWeight: FontWeight.bold,
+                    //                 ),
+                    //               ),
+                    //               Text(
+                    //                 '    Kemampuan\n    Anak Didik',
+                    //                 style: TextStyle(
+                    //                   fontSize: 18,
+                    //                   fontWeight: FontWeight.normal,
+                    //                   height: 1.1,
+                    //                 ),
+                    //               ),
+                    //             ],
+                    //           ),
+                    //         ),
+                    //         Transform.rotate(
+                    //           angle: 0.3,
+                    //           child: Container(
+                    //             width: 29.w,
+                    //             height: 23.h,
+                    //             decoration: BoxDecoration(
+                    //               image: const DecorationImage(
+                    //                 image: AssetImage(
+                    //                   'assets/images/tugas.png',
+                    //                 ),
+                    //                 fit: BoxFit.cover,
+                    //               ),
+                    //               borderRadius: BorderRadius.circular(15),
+                    //             ),
+                    //           ),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ).animate(delay: 200.ms).fadeIn(duration: 300.ms),
                   ],
                 ),
               ),

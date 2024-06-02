@@ -1,10 +1,11 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sizer/sizer.dart';
 import 'package:shimmer/shimmer.dart';
+import 'package:study/menu/penilaian/chart_container.dart';
+import 'package:study/menu/penilaian/line_chart.dart';
 import 'package:super_tooltip/super_tooltip.dart';
+import 'package:tflite_flutter/tflite_flutter.dart';
 
 class SemesterOne extends StatefulWidget {
   const SemesterOne({super.key});
@@ -17,10 +18,14 @@ class SemesterOne extends StatefulWidget {
 
 class _SemesterOneState extends State<SemesterOne> {
   bool _isLoading = true;
+  late Interpreter _interpreter;
+  String _kesimpulan = 'Sedang memuat refleksi...';
+  List<double> _input = [100, 100, 100, 100, 100, 100, 100, 100];
 
   @override
   void initState() {
     super.initState();
+    _loadModel();
     Timer(const Duration(milliseconds: 300), () {
       if (mounted) {
         setState(() {
@@ -30,12 +35,58 @@ class _SemesterOneState extends State<SemesterOne> {
     });
   }
 
+  Future<void> _loadModel() async {
+    try {
+      _interpreter = await Interpreter.fromAsset('assets/model.tflite');
+      _predict();
+    } catch (e) {
+      print('Failed to load model.');
+    }
+  }
+
+  void _predict() async {
+    var output = List.filled(8, 0.0).reshape([1, 8]);
+    _interpreter.run(_input.reshape([1, _input.length]), output);
+    setState(() {
+      _kesimpulan = _getKesimpulan(output[0]);
+    });
+  }
+
+  String _getKesimpulan(List<double> output) {
+    int maxIndex = output
+        .indexWhere((val) => val == output.reduce((a, b) => a > b ? a : b));
+    switch (maxIndex) {
+      case 0:
+        return 'Ananda sangat baik dalam semester ini, tolong dipertahankan.';
+      case 1:
+        return 'Ananda perlu meningkatkan beberapa aspek belajar.';
+      case 2:
+        return 'Ananda cukup baik, tetapi bisa lebih baik lagi.';
+      case 3:
+        return 'Ananda sangat baik dan terus mengalami peningkatan.';
+      case 4:
+        return 'Ananda perlu banyak peningkatan dan lebih giat belajar.';
+      case 5:
+        return 'Ananda baik, namun harus mempertahankan konsistensinya.';
+      case 6:
+        return 'Ananda memerlukan bantuan tambahan untuk pelajaran.';
+      case 7:
+        return 'Ananda mengalami peningkatan yang baik.';
+      default:
+        return 'Refleksi tidak diketahui.';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(186, 252, 182, 1),
       body: Column(
         children: [
+          ChartContainer(
+            color: Colors.transparent,
+            chart: LineChartContent(input: _input),
+          ),
           const SizedBox(height: 20),
           Expanded(
             child: Container(
@@ -66,92 +117,68 @@ class _SemesterOneState extends State<SemesterOne> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      _buildRow(
-                          'Tugas 1',
-                          'Nilai Tugas 1 sudah bagus dan tolong dipertahankan',
-                          '90'),
+                      _buildRow('Tugas 1', 'Nilai Tugas 1 sudah cukup bagus ',
+                          _input[0].toString()),
                       const Divider(
                         color: Colors.grey,
                         thickness: 1,
                         height: 20,
                       ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      _buildRow(
-                          'Tugas 2',
-                          'Nilai Tugas 2 sudah bagus dan tolong dipertahankan',
-                          '90'),
+                      SizedBox(height: 2.h),
+                      _buildRow('Tugas 2', 'Nilai Tugas 2 sudah dipertahankan',
+                          _input[1].toString()),
                       const Divider(
                         color: Colors.grey,
                         thickness: 1,
                         height: 20,
                       ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
+                      SizedBox(height: 2.h),
                       _buildRow(
                           'Tugas 3',
-                          'Nilai Tugas 3 sudah bagus dan tolong dipertahankan',
-                          '100'),
+                          'Nilai Tugas 3 dan tolong dipertahankan',
+                          _input[2].toString()),
                       const Divider(
                         color: Colors.grey,
                         thickness: 1,
                         height: 20,
                       ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      _buildRow(
-                          'UTS',
-                          'Nilai UTS sudah bagus dan tolong dipertahankan',
-                          '100'),
+                      SizedBox(height: 2.h),
+                      _buildRow('UTS', 'Nilai UTS bagus dan dipertahankan',
+                          _input[3].toString()),
                       const Divider(
                         color: Colors.grey,
                         thickness: 1,
                         height: 20,
                       ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      _buildRow(
-                          'Tugas 4',
-                          'Nilai Tugas 4 sudah bagus dan tolong dipertahankan',
-                          '90'),
+                      SizedBox(height: 2.h),
+                      _buildRow('Tugas 4', 'Nilai Tugas 4 sudah sangat',
+                          _input[4].toString()),
                       const Divider(
                         color: Colors.grey,
                         thickness: 1,
                         height: 20,
                       ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      _buildRow(
-                          'Tugas 5',
-                          'Nilai Tugas 5 sudah bagus dan tolong dipertahankan',
-                          '95'),
+                      SizedBox(height: 2.h),
+                      _buildRow('Tugas 5', 'Nilai Tugas 5 tolong dipertahankan',
+                          _input[5].toString()),
                       const Divider(
                         color: Colors.grey,
                         thickness: 1,
                         height: 20,
                       ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
+                      SizedBox(height: 2.h),
                       _buildRow(
                           'Quiz',
                           'Nilai quiz cukup bagus dan perlu ditingkatkan',
-                          '75'),
+                          _input[6].toString()),
                       const Divider(
                         color: Colors.grey,
                         thickness: 1,
                         height: 20,
                       ),
-                      SizedBox(
-                        height: 2.h,
-                      ),
-                      _buildRow('UAS',
-                          'Nilai UAS cukup bagus dan perlu ditingkatkan', '80'),
+                      SizedBox(height: 2.h),
+                      _buildRow(
+                          'UAS', 'Nilai UAS cukup bagus', _input[7].toString()),
                       const Divider(
                         color: Colors.grey,
                         thickness: 1,
@@ -181,47 +208,18 @@ class _SemesterOneState extends State<SemesterOne> {
                                     ),
                                   ),
                                   const Divider(
-                                    color:
-                                        Colors.grey, // Adjust color as needed
-                                    thickness: 1, // Adjust thickness as needed
+                                    color: Colors.grey,
+                                    thickness: 1,
                                     height: 20,
                                   ),
                                   SizedBox(height: 2.h),
                                   Text(
-                                    'Selama satu semester Ananda cukup bagus dan perlu ditingkatkan kembali',
+                                    _kesimpulan,
                                     style: TextStyle(fontSize: 14.sp),
                                   ),
                                   SizedBox(height: 2.h),
                                 ],
                               ),
-                            ),
-                      SizedBox(height: 2.h),
-                      _isLoading
-                          ? _buildShimmerButton()
-                          : ElevatedButton(
-                              onPressed: () {
-                                Fluttertoast.showToast(
-                                    msg: "Rapot telah diunduh",
-                                    toastLength: Toast.LENGTH_SHORT,
-                                    gravity: ToastGravity.CENTER,
-                                    timeInSecForIosWeb: 1,
-                                    textColor: Colors.white,
-                                    fontSize: 16.0);
-                              },
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                backgroundColor:
-                                    const Color.fromRGBO(76, 66, 83, 1),
-                                foregroundColor: Colors.white,
-                                elevation: 5.0,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 105.0,
-                                  vertical: 15.0,
-                                ),
-                              ),
-                              child: const Text('Unduh Rapot'),
                             ),
                       SizedBox(height: 10.h),
                     ],
@@ -345,27 +343,6 @@ class _SemesterOneState extends State<SemesterOne> {
             ),
             SizedBox(height: 2.h),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildShimmerButton() {
-    return SizedBox(
-      width: double.infinity,
-      child: Shimmer.fromColors(
-        baseColor: Colors.grey[300]!,
-        highlightColor: Colors.grey[100]!,
-        child: ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            backgroundColor: Colors.white,
-            elevation: 0,
-          ),
-          child: const Text('Unduh Rapot'),
         ),
       ),
     );

@@ -18,13 +18,17 @@ class _ChatDetailPageOrtuState extends State<ChatDetailPageOrtu> {
     ChatMessage(
         messageContent: "Halo, nama saya Janeudi.", messageType: "receiver"),
     ChatMessage(
-        messageContent: "Tolong periksa dan segera tanda tangani dokumen ini,",
+        messageContent:
+            "Tolong periksa dan segera tanda tangani dokumen yang dikirimkan,",
         messageType: "receiver"),
     ChatMessage(
         messageContent: "untuk tur perjalanan anak anda.",
         messageType: "receiver"),
-    ChatMessage(messageContent: "ehhhh, doing OK.", messageType: "sender"),
     ChatMessage(messageContent: "Terimakasih!", messageType: "receiver"),
+    ChatMessage(
+        messageContent:
+            "Terima kasih banyak. Jika saya memiliki pertanyaan, saya akan menghubungi Anda.",
+        messageType: "sender"),
   ];
 
   final TextEditingController _controller = TextEditingController();
@@ -287,22 +291,22 @@ class _ChatDetailPageOrtuState extends State<ChatDetailPageOrtu> {
               color: Colors.white,
               child: Row(
                 children: <Widget>[
-                  GestureDetector(
-                    onTap: _pickFile,
-                    child: Container(
-                      height: 30,
-                      width: 30,
-                      decoration: BoxDecoration(
-                        color: const Color.fromRGBO(76, 66, 83, 0.9),
-                        borderRadius: BorderRadius.circular(30),
-                      ),
-                      child: const Icon(
-                        Icons.add,
-                        color: Colors.white,
-                        size: 20,
-                      ),
-                    ),
-                  ),
+                  // GestureDetector(
+                  //   onTap: _pickFile,
+                  //   child: Container(
+                  //     height: 30,
+                  //     width: 30,
+                  //     decoration: BoxDecoration(
+                  //       color: const Color.fromRGBO(76, 66, 83, 0.9),
+                  //       borderRadius: BorderRadius.circular(30),
+                  //     ),
+                  //     child: const Icon(
+                  //       Icons.add,
+                  //       color: Colors.white,
+                  //       size: 20,
+                  //     ),
+                  //   ),
+                  // ),
                   const SizedBox(
                     width: 15,
                   ),
