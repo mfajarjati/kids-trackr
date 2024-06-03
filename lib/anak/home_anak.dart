@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:study/anak/latihan/latihan.dart';
+import 'package:study/anak/dashboard/dashboard.dart';
 import 'package:study/anak/latihan/menu.dart';
 import 'package:study/anak/modul.dart';
 import 'package:sizer/sizer.dart';
@@ -295,7 +295,9 @@ class _AnakState extends State<Anak> {
                     ).animate(delay: 200.ms).fadeIn(duration: 300.ms),
                     SizedBox(height: 4.h),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, Dashboard.routeName);
+                      },
                       child: Container(
                         width: 8.w,
                         height: 120,

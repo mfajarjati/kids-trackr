@@ -28,7 +28,7 @@ class ChartContainer extends StatelessWidget {
           children: <Widget>[
             Expanded(
                 child: Container(
-              padding: EdgeInsets.only(top: 10),
+              padding: EdgeInsets.all(10),
               child: chart,
             ))
           ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:study/anak/dashboard/grafik.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 
@@ -59,7 +60,335 @@ class _DashboardState extends State<Dashboard> {
                   shrinkWrap: true,
                   crossAxisCount: 2,
                   crossAxisSpacing: 7,
-                  children: [],
+                  children: [
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(context, Grafik.routeName);
+                        },
+                        child: Stack(
+                          children: [
+                            Container(
+                              width: 140,
+                              height: 120,
+                              padding: const EdgeInsets.all(15),
+                              decoration: BoxDecoration(
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.5),
+                                    spreadRadius: 2,
+                                    blurRadius: 7,
+                                    offset: const Offset(0, 5),
+                                  ),
+                                ],
+                                color: Color.fromARGB(156, 255, 219, 142),
+                                borderRadius: BorderRadius.circular(30),
+                              ),
+                              child: const Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: 5),
+                                  Text(
+                                    'Pembelajaran',
+                                    style: TextStyle(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Berhitung',
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.normal,
+                                      height: 1.1,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Positioned(
+                              bottom: 29,
+                              right: 10,
+                              child: Transform.rotate(
+                                angle: 0.3,
+                                child: Container(
+                                  width: 20.w,
+                                  height: 10.h,
+                                  decoration: BoxDecoration(
+                                    image: const DecorationImage(
+                                      image: AssetImage(
+                                        'assets/images/berhitung.png',
+                                      ),
+                                      fit: BoxFit.cover,
+                                    ),
+                                    borderRadius: BorderRadius.circular(15),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )).animate(delay: 200.ms).fadeIn(duration: 300.ms),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: 140,
+                            height: 120,
+                            padding: const EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 5),
+                                ),
+                              ],
+                              color: Color.fromARGB(220, 119, 189, 255),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 5),
+                                Text(
+                                  'Pembelajaran',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  'Bahasa',
+                                  style: TextStyle(
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.normal,
+                                    height: 1.1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 27,
+                            right: 7,
+                            child: Transform.rotate(
+                              angle: 0.3,
+                              child: Container(
+                                width: 20.w,
+                                height: 10.h,
+                                decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                    image: AssetImage(
+                                      'assets/images/bahasa.png',
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ).animate(delay: 200.ms).fadeIn(duration: 300.ms),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: 140,
+                            height: 120,
+                            padding: const EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 5),
+                                ),
+                              ],
+                              color: Color.fromARGB(199, 240, 255, 106),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 5),
+                                Text(
+                                  'Pembelajaran',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  'Ilmu\nAlam',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal,
+                                    height: 1.1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 27,
+                            right: 10,
+                            child: Transform.rotate(
+                              angle: 0.2,
+                              child: Container(
+                                width: 25.w,
+                                height: 13.h,
+                                decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                    image: AssetImage(
+                                      'assets/images/alam2.png',
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ).animate(delay: 200.ms).fadeIn(duration: 300.ms),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: 140,
+                            height: 120,
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 5),
+                                ),
+                              ],
+                              color: Color.fromARGB(156, 202, 255, 159),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: const Column(
+                              textBaseline: TextBaseline.alphabetic,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 5),
+                                Text(
+                                  'Pembelajaran',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  'Ilmu\nSosial',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.normal,
+                                    height: 1.1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 27,
+                            right: 7,
+                            child: Transform.rotate(
+                              angle: 0.3,
+                              child: Container(
+                                width: 22.w,
+                                height: 12.h,
+                                decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                    image: AssetImage(
+                                      'assets/images/sosial.png',
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ).animate(delay: 200.ms).fadeIn(duration: 300.ms),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: 140,
+                            height: 120,
+                            padding: const EdgeInsets.all(15),
+                            decoration: BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.5),
+                                  spreadRadius: 2,
+                                  blurRadius: 7,
+                                  offset: const Offset(0, 5),
+                                ),
+                              ],
+                              color: Color.fromARGB(127, 255, 159, 247),
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: const Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 5),
+                                Text(
+                                  'Pembelajaran',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  'Etika',
+                                  style: TextStyle(
+                                    fontSize: 19,
+                                    fontWeight: FontWeight.normal,
+                                    height: 1.1,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Positioned(
+                            bottom: 27,
+                            right: 7,
+                            child: Transform.rotate(
+                              angle: 0.1,
+                              child: Container(
+                                width: 23.w,
+                                height: 13.h,
+                                decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                    image: AssetImage(
+                                      'assets/images/etika.png',
+                                    ),
+                                    fit: BoxFit.cover,
+                                  ),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ).animate(delay: 200.ms).fadeIn(duration: 300.ms),
+                  ],
                 ),
               ),
             ),

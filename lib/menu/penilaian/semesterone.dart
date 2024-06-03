@@ -30,6 +30,12 @@ class _SemesterOneState extends State<SemesterOne> {
     100.0,
     100.0,
     100.0,
+    50.0,
+    60.0,
+    70.0,
+    80.0,
+    90.0,
+    100.0,
   ];
 
   static const int _expectedInputLength =

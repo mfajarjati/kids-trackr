@@ -2,10 +2,14 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:study/anak/dashboard/line_chart_data.dart';
 
+// line_chart.dart
+// line_chart.dart
 class LineChartContent extends StatelessWidget {
   final List<double> input;
+  final List<double> inputSecond;
 
-  const LineChartContent({super.key, required this.input});
+  const LineChartContent(
+      {super.key, required this.input, required this.inputSecond});
 
   @override
   Widget build(BuildContext context) {
@@ -14,31 +18,23 @@ class LineChartContent extends StatelessWidget {
         lineTouchData: LineTouchData(
           getTouchedSpotIndicator: (barData, spotIndexes) {
             return spotIndexes.map((index) {
-              return const TouchedSpotIndicatorData(
-                FlLine(color: Color.fromRGBO(109, 93, 110, 1), strokeWidth: 2),
+              return TouchedSpotIndicatorData(
+                FlLine(color: barData.color, strokeWidth: 2),
                 FlDotData(show: true),
               );
             }).toList();
           },
           touchTooltipData: LineTouchTooltipData(
-            getTooltipColor: (LineBarSpot touchedBarSpot) {
-              if (touchedBarSpot.y > 80) {
-                return Colors.greenAccent;
-              } else if (touchedBarSpot.y > 50) {
-                return Colors.orangeAccent;
-              } else {
-                return Colors.redAccent;
-              }
-            },
             getTooltipItems: (touchedSpots) {
               return touchedSpots.map((touchedSpot) {
-                return LineTooltipItem(
-                  '${touchedSpot.y}',
-                  const TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
+                final textStyle = TextStyle(
+                  color: touchedSpot.bar.color ==
+                          const Color.fromRGBO(109, 93, 110, 1)
+                      ? Colors.white
+                      : Colors.yellow,
+                  fontWeight: FontWeight.bold,
                 );
+                return LineTooltipItem('${touchedSpot.y}', textStyle);
               }).toList();
             },
           ),
@@ -60,29 +56,24 @@ class LineChartContent extends StatelessWidget {
                 String text;
                 switch (value.toInt()) {
                   case 1:
-                    text = 'Tugas 1';
+                    text = 'Level 1';
                     break;
                   case 2:
-                    text = 'Tugas 2';
+                    text = 'Level 2';
                     break;
                   case 3:
-                    text = 'Tugas 3';
+                    text = 'Level 3';
                     break;
                   case 4:
-                    text = 'UTS';
+                    text = 'Level 4';
                     break;
                   case 5:
-                    text = 'Tugas 4';
+                    text = 'Level 5';
                     break;
                   case 6:
-                    text = 'Tugas 5';
+                    text = 'Level 6';
                     break;
-                  case 7:
-                    text = 'Quiz';
-                    break;
-                  case 8:
-                    text = 'UAS';
-                    break;
+
                   default:
                     text = '';
                     break;
@@ -105,7 +96,7 @@ class LineChartContent extends StatelessWidget {
           leftTitles: AxisTitles(
             sideTitles: SideTitles(
               showTitles: true,
-              interval: 20,
+              interval: 2,
               getTitlesWidget: (value, meta) {
                 return Text(
                   value.toInt().toString(),
@@ -126,10 +117,10 @@ class LineChartContent extends StatelessWidget {
           ),
         ),
         minX: 1,
-        maxX: 8,
+        maxX: 6,
         minY: 0,
-        maxY: 100,
-        lineBarsData: createLineChartBarData(input),
+        maxY: 10,
+        lineBarsData: createLineChartBarData(input, inputSecond),
       ),
     );
   }

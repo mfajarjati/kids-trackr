@@ -77,6 +77,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/model.tflite
+    - assets/model2.tflite
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
