@@ -20,7 +20,7 @@ class _SemesterTwoState extends State<SemesterTwo> {
   bool _isLoading = true;
   late Interpreter _interpreter;
   String _kesimpulan = 'Sedang memuat refleksi...';
-  List<double> _input = [90, 75, 85, 100, 100, 75, 100, 90];
+  List<double> _input = [90.0, 75.5, 85.10, 100.0, 100.10, 75.5, 100.10, 90.90];
 
   @override
   void initState() {

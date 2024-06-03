@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:study/anak/latihan/latihan.dart';
+import 'package:study/anak/latihan/menu.dart';
 import 'package:study/anak/modul.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -229,7 +230,7 @@ class _AnakState extends State<Anak> {
                     SizedBox(height: 2.h),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, Latihan.routeName);
+                        Navigator.pushNamed(context, Menu.routeName);
                       },
                       child: Container(
                         width: 8.w,
@@ -282,6 +283,70 @@ class _AnakState extends State<Anak> {
                                   image: const DecorationImage(
                                     image:
                                         AssetImage('assets/images/tugas.png'),
+                                    fit: BoxFit.cover,
+                                  ),
+                                  borderRadius: BorderRadius.circular(15),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ).animate(delay: 200.ms).fadeIn(duration: 300.ms),
+                    SizedBox(height: 4.h),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Container(
+                        width: 8.w,
+                        height: 120,
+                        padding: const EdgeInsets.all(15),
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 7,
+                              offset: const Offset(0, 5),
+                            ),
+                          ],
+                          color: Color.fromARGB(156, 193, 161, 245),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(height: 5),
+                                  Text(
+                                    '    Dashboard',
+                                    style: TextStyle(
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    '     Kemampuan\n     Anak',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.normal,
+                                      height: 1.1,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Transform.rotate(
+                              angle: 0.3,
+                              child: Container(
+                                width: 33.w,
+                                height: 18.h,
+                                decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/dashboard1.png'),
                                     fit: BoxFit.cover,
                                   ),
                                   borderRadius: BorderRadius.circular(15),

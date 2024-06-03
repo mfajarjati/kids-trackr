@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:study/anak/dashboard/dashboard.dart';
 import 'package:study/anak/latihan/level1.dart';
+import 'package:study/anak/latihan/menu.dart';
 import 'package:study/anak/splash_anak.dart';
 import 'package:study/guru/data_diri_guru.dart';
 import 'package:study/guru/home_guru.dart';
@@ -109,6 +111,8 @@ class MyApp extends StatelessWidget {
           SplashPage.routeName: (context) => const SplashPage(),
           SplashPageAnak.routeName: (context) => const SplashPageAnak(),
           MatpelGuru.routeName: (context) => const MatpelGuru(),
+          Menu.routeName: (context) => const Menu(),
+          Dashboard.routeName: (context) => const Dashboard(),
         },
         initialRoute: SplashPage.routeName,
       );
