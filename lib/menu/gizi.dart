@@ -95,14 +95,40 @@ class Gizi extends StatelessWidget {
                 reBounceDepth: 10.0,
                 children: [
                   _buildMenuContainer(
-                      'Senin', 'Jam 12.00 - 13.00', 'Nasi + Ayam'),
+                      'Senin',
+                      'Jam 12.00 - 13.00',
+                      'Nasi + Ayam',
+                      'Gizi: Protein, Karbohidrat, Lemak',
+                      'assets/images/nasi_ayam.png',
+                      'Nasi dan ayam menyediakan protein untuk membangun otot, karbohidrat untuk energi, dan lemak untuk fungsi tubuh.'),
                   _buildMenuContainer(
-                      'Selasa', 'Jam 12.00 - 13.00', 'Nasi + Sayur'),
-                  _buildMenuContainer('Rabu', 'Jam 12.00 - 13.00', 'Gandum'),
+                      'Selasa',
+                      'Jam 12.00 - 13.00',
+                      'Nasi + Sayur',
+                      'Gizi: Serat, Vitamin, Mineral',
+                      'assets/images/nasi_sayur.png',
+                      'Nasi dan sayur memberikan serat untuk pencernaan, vitamin untuk kesehatan mata dan kulit, serta mineral untuk fungsi tubuh.'),
                   _buildMenuContainer(
-                      'Kamis', 'Jam 12.00 - 13.00', 'Roti + Susu'),
+                      'Rabu',
+                      'Jam 12.00 - 13.00',
+                      'Gandum',
+                      'Gizi: Serat, Karbohidrat, Protein',
+                      'assets/images/gandum.png',
+                      'Gandum kaya akan serat untuk pencernaan, karbohidrat untuk energi, dan protein untuk memperbaiki jaringan.'),
                   _buildMenuContainer(
-                      'Jum\'at', 'Jam 12.00 - 13.00', 'Buah-buahan'),
+                      'Kamis',
+                      'Jam 12.00 - 13.00',
+                      'Roti + Susu',
+                      'Gizi: Kalsium, Protein, Karbohidrat',
+                      'assets/images/roti_susu.png',
+                      'Roti dan susu memberikan kalsium untuk tulang, protein untuk otot, dan karbohidrat untuk energi.'),
+                  _buildMenuContainer(
+                      'Jum\'at',
+                      'Jam 12.00 - 13.00',
+                      'Buah-buahan',
+                      'Gizi: Vitamin, Serat, Mineral',
+                      'assets/images/buah.png',
+                      'Buah-buahan menyediakan vitamin untuk sistem kekebalan tubuh, serat untuk pencernaan, dan mineral untuk fungsi tubuh.'),
                 ],
               ),
             ),
@@ -112,10 +138,13 @@ class Gizi extends StatelessWidget {
     );
   }
 
-  Widget _buildMenuContainer(String day, String time, String menu) {
+  Widget _buildMenuContainer(String day, String time, String menu, String gizi,
+      String imagePath, String description) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 1.h),
-      padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 2.h),
+      padding: EdgeInsets.symmetric(
+        horizontal: 2.w,
+      ),
       decoration: BoxDecoration(
         color: const Color.fromRGBO(238, 238, 238, 100),
         borderRadius: BorderRadius.circular(5.w),
@@ -131,32 +160,56 @@ class Gizi extends StatelessWidget {
           color: Colors.grey.withOpacity(0.5),
         ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                day,
-                style:
-                    TextStyle(fontSize: 12.sp, fontWeight: FontWeight.normal),
+      child: ExpansionTile(
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              day,
+              style: TextStyle(fontSize: 12.sp, fontWeight: FontWeight.normal),
+            ),
+            Text(
+              time,
+              style: TextStyle(
+                fontSize: 9.sp,
+                fontWeight: FontWeight.normal,
               ),
-              Text(
-                time,
-                style: TextStyle(
-                  fontSize: 9.sp,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            ],
+            ),
+          ],
+        ),
+        subtitle: Text(
+          menu,
+          style: TextStyle(
+            height: 0.9,
+            fontSize: 18.sp,
+            fontWeight: FontWeight.bold,
           ),
-          Text(
-            menu,
-            style: TextStyle(
-              height: 0.9,
-              fontSize: 18.sp,
-              fontWeight: FontWeight.bold,
+        ),
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.only(bottom: 2.h),
+            margin: EdgeInsets.only(left: 3.w, right: 1.w),
+            child: Column(
+              children: [
+                Image.asset(
+                  imagePath,
+                  height: 200,
+                  width: 200,
+                ),
+                SizedBox(height: 1.h),
+                Text(
+                  gizi,
+                  style:
+                      TextStyle(fontSize: 10.sp, fontWeight: FontWeight.normal),
+                ),
+                SizedBox(height: 1.h),
+                Text(
+                  description,
+                  style:
+                      TextStyle(fontSize: 10.sp, fontWeight: FontWeight.normal),
+                  textAlign: TextAlign.justify,
+                ),
+              ],
             ),
           ),
         ],
